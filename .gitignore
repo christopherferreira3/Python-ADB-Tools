@@ -1,2 +1,4 @@
-.ideia/*
+.idea/
 .DS_STORE
+.git/
+*.pyc
