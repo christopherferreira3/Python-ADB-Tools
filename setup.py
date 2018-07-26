@@ -6,7 +6,8 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="python_adb_utils",
-    version="0.0.2",
+    py_modules=['python_adb_utils'],
+    version="0.0.3",
     author="Christopher Ferreira",
     author_email="christopher.ferreira3@outlook.com",
     description="This is the first test of a ADB interface for Python",
