@@ -12,7 +12,7 @@ setuptools.setup(
     description="This is the first test of a ADB interface for Python",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/pypa/sampleproject",
+    url="https://github.com/christopherferreira3/Python-ADB-Tools",
     packages=setuptools.find_packages(),
     classifiers=(
         "Programming Language :: Python :: 3",
