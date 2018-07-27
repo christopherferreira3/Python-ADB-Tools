@@ -2,3 +2,5 @@
 .DS_STORE
 .git/
 *.pyc
+python_adb_utils.egg-info/
+dist/*
