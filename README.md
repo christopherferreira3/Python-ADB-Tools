@@ -27,17 +27,17 @@ Available Methods
 ### **get_connected devices()**
 This method will return you a list of tuples having the device name and Android version for that specific version.
 
-### **install_app()**
+### **install_app(device=device_name, apk=path_to_apk)**
 Installs an app to the chosen device.
 
 
-### **unistall_app()**
+### **unistall_app(device=device_name, package=package_name)**
 Uninstalls an app
 
 
-### **is_device_connected()**
+### **is_device_connected(device=device)**
 Returns True if a device is connected.
 
 
-### **is_app_installed()**
+### **is_app_installed(device=device_name, package=package_name)**
 Check if an app is installed on a specific device.
