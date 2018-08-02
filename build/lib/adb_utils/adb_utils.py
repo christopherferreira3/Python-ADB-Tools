@@ -181,17 +181,27 @@ def unlock_device(password=None, device=None) -> bool:
     :param device:
     :return: True is sucess, False if error
     """
-    command_input = ["adb", "-s", device, "shell", "input", "text", str(password), "&&", "adb", "-s", device, "shell", "input", "keyevent", "66"]
+
+    command_input = ["adb", "-s", device, "shell", "input", "text", password]
+    command_submit = ["adb", "-s", device, "shell", "input", "keyevent", 66]
 
     if device is None and len(get_connected_devices()) != 1:
         print("No device was specified and/or multiple devices are connected")
         return False
 
-    if device is None:
-        print("Device was not specified.")
-        return False
 
-    p = subprocess.Popen(command_input)
+    if device is None:
+        command_input.pop(1)
+        command_input.pop(1)
+        command_submit.pop(1)
+        command_submit.pop(1)
+
+    p = subprocess.Popen(command_input, stdout=None)
     p.wait()
+    p.terminate()
+
+    p1 = subprocess.Popen(command_submit, stdout=None)
+    p1.wait()
+    p1.terminate()
 
     return True
