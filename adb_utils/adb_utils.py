@@ -175,7 +175,12 @@ def list_files_in_device() -> None:
 
 
 def unlock_device(password=None, device=None) -> bool:
-    #  adb -s 21010b2b146f1300 shell input text 1111 && adb -s 21010b2b146f1300 shell input keyevent 66
+    """
+    Unlocks a device given a device name and the password
+    :param password:
+    :param device:
+    :return: True is sucess, False if error
+    """
 
     command_input = ["adb", "-s", device, "shell", "input", "text", password]
     command_submit = ["adb", "-s", device, "shell", "input", "keyevent", 66]
