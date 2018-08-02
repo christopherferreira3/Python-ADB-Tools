@@ -142,7 +142,7 @@ def get_apk_from_device(package=None, device=None) -> bool:
         print("Package is required but it was not specified.")
         return False
 
-    if device is None and len(self.get_connected_devices()) != 1:
+    if device is None and len(get_connected_devices()) != 1:
         print("There are multiple devices connected, please specify a device to get the APK from")
         return False
 
@@ -155,7 +155,7 @@ def get_apk_from_device(package=None, device=None) -> bool:
     # TODO: Rest of the stuff
 
 
-def push_file_to_device(device=None, path=None) -> None:  # For now...
+def push_file_to_device() -> None:  # For now...
     """
     Pushes a file to the device
     :param device:
@@ -164,7 +164,7 @@ def push_file_to_device(device=None, path=None) -> None:  # For now...
     pass
 
 
-def list_files_in_device(device=None, path=None) -> list:
+def list_files_in_device() -> None:
     """
     Gets a list of files in a specific folder
     :param device:
@@ -172,3 +172,31 @@ def list_files_in_device(device=None, path=None) -> list:
     :return: list of files
     """
     pass
+
+
+def unlock_device(password=None, device=None) -> bool:
+    #  adb -s 21010b2b146f1300 shell input text 1111 && adb -s 21010b2b146f1300 shell input keyevent 66
+
+    command_input = ["adb", "-s", device, "shell", "input", "text", password]
+    command_submit = ["adb", "-s", device, "shell", "input", "keyevent", 66]
+
+    if device is None and len(get_connected_devices()) != 1:
+        print("No device was specified and/or multiple devices are connected")
+        return False
+
+
+    if device is None:
+        command_input.pop(1)
+        command_input.pop(1)
+        command_submit.pop(1)
+        command_submit.pop(1)
+
+    p = subprocess.Popen(command_input, stdout=None)
+    p.wait()
+    p.terminate()
+
+    p1 = subprocess.Popen(command_submit, stdout=None)
+    p1.wait()
+    p1.terminate()
+
+    return True

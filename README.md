@@ -15,16 +15,16 @@ Usage:
 
 To use these tools you only need to import and create an instance of AdbUtils()
 
-`from adb_utils import AdbUtils`
+`from adb_utils import adb_utils as adb`
 
-`adb_instance = AdbUtils()`
+`adb.get_connected_devices()`
 
 ___
 
 Available Methods
 ======
 
-### **get_connected devices()**
+### **get_connected_devices()**
 This method will return you a list of tuples having the device name and Android version for that specific version.
 
 ### **install_app(device=device_name, apk=path_to_apk)**
@@ -41,3 +41,6 @@ Returns True if a device is connected.
 
 ### **is_app_installed(device=device_name, package=package_name)**
 Check if an app is installed on a specific device.
+
+### **unlock_device(device=device_name, password=password)**
+Unlocks a device with the correct password. 
